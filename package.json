@@ -1,0 +1,25 @@
+{
+  "name": "muscle",
+  "description": "A layer on top of Backbonejs to bring more control to views and a better integration between views and models/collections",
+  "version": "0.1.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lucasfs7/muscle.git"
+  },
+  "dependencies": {
+    "gulp": "^3.5.2",
+    "gulp-browserify": "^0.5.0",
+    "gulp-concat": ">= 2.1.7",
+    "gulp-livescript": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": ">= 0.2.1",
+    "gulp-util": "^2.2.14"
+  },
+  "author": "Lucas F. Souza",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node ./node_modules/gulp/bin/gulp",
+    "compile": "node ./node_modules/gulp/bin/gulp build"
+  }
+}
