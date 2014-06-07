@@ -1,20 +1,23 @@
-Muscle = window.Muscle = {}
+'use strict'
 
-Muscle.View = Backbone.View.extend
+Backbone = require 'backbone'
+Backbone.$ = $ = require 'jquery'
+
+module.exports = Backbone.View.extend
   initialize: ->
-    @createTemplate()
-    @watcher()
-    @trigger('initialized')
+    @createTemplate!
+    @watcher!
+    @trigger 'initialized'
 
   renderMethod: 'html'
   templateDir: 'app/templates/'
 
   render: (obj) ->
-    @$el[@renderMethod](@template(obj))
-    @trigger('rendered')
+    @$el[@renderMethod] @template obj
+    @trigger 'rendered'
 
   watcher: ->
-    @on('rendered', @DOMControl, this)
+    @on 'rendered', @DOMControl, @
 
   createTemplate: ->
     if HandlebarsTemplates?
