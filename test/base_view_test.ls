@@ -1,22 +1,25 @@
-describe 'Base View', ->
-  before ->
-    TestView = Muscle.View.extend
-      className: 'test-view'
-      tagName: 'article'
-      id: 'test'
-      templateDir: 'templates/'
-      templateName: 'base_view_test'
+Backbone = require 'backbone'
+Backbone.$ = $ = require 'jquery'
+View = require '../lib/base_view'
+test = require 'tape'
 
-    @testView = new TestView
-    @testView.render()
+test 'Base View', (t) ->
+  TestView = View.extend do
+    className: 'test-view'
+    tagName: 'article'
+    id: 'test'
 
-  it 'should exist', ->
-    expect(@testView).to.be.ok
+  testView = new TestView!
+  testView.render!
 
-  it 'should have a valid jquery instance in $el', ->
-    expect(@testView.$el).to.exist
+  t.test 'should exist', (t) ->
+    t.ok testView
+    t.end!
 
-  it 'should have the same class, id and tag in both $el and view properties', ->
-    expect(@testView.$el.is 'article').to.be.true
-    expect(@testView.$el).to.have.class 'test-view'
-    expect(@testView.$el).to.have.id 'test'
+  t.test 'should have a valid jquery instance in $el', (t) ->
+    t.ok testView.$el
+    t.ok testView.$el.hasClass 'test-view'
+    t.equal testView.$el.attr('id'), 'test'
+    t.equal testView.$el.0.tagName.toLowerCase!, 'article'
+    t.end!
+
