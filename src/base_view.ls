@@ -2,6 +2,7 @@
 
 Backbone = require 'backbone'
 Backbone.$ = $ = require 'jquery'
+_ = require 'underscore'
 
 module.exports = Backbone.View.extend do
   initialize: ->
@@ -20,10 +21,7 @@ module.exports = Backbone.View.extend do
     @on 'rendered', @DOMControl, @
 
   createTemplate: ->
-    if HandlebarsTemplates?
-      @template = HandlebarsTemplates[@templateDir + @templateName]
-    else
-      @template = Handlebars.templates[@templateName + '.hbs']
+    @template = _.template('<p>teste</p>');
 
   DOMControl: ->
 
