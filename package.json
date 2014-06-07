@@ -8,11 +8,9 @@
     "url": "git://github.com/lucasfs7/muscle.git"
   },
   "dependencies": {
+    "LiveScript": "^1.2.0",
     "backbone": "^1.1.2",
     "browserify": "^4.1.8",
-    "gulp": "^3.5.2",
-    "gulp-livescript": "^0.3.0",
-    "gulp-util": "^2.2.14",
     "jquery": "^2.1.1",
     "liveify": "^0.4.0",
     "phantomjs": "^1.9.7-8",
@@ -23,7 +21,7 @@
   "author": "Lucas F. Souza",
   "main": "lib/index.js",
   "scripts": {
-    "start": "gulp build",
+    "start": "lsc -cob lib/ src/",
     "test": "npm start && browserify -t liveify test/*.ls | testling"
   }
 }
