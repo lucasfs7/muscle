@@ -4,7 +4,7 @@ Backbone = require 'backbone'
 Backbone.$ = $ = require 'jquery'
 View = require './base_view'
 
-module.exports = View.extend
+module.exports = View.extend do
   renderMethod: 'append',
 
   addOne: (model) -> 

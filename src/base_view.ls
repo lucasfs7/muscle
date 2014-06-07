@@ -3,7 +3,7 @@
 Backbone = require 'backbone'
 Backbone.$ = $ = require 'jquery'
 
-module.exports = Backbone.View.extend
+module.exports = Backbone.View.extend do
   initialize: ->
     @createTemplate!
     @watcher!
