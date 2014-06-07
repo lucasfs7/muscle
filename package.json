@@ -8,22 +8,21 @@
     "url": "git://github.com/lucasfs7/muscle.git"
   },
   "dependencies": {
+    "backbone": "^1.1.2",
+    "browserify": "^4.1.8",
     "gulp": "^3.5.2",
-    "gulp-browserify": "^0.5.0",
-    "gulp-karma": "0.0.4",
     "gulp-livescript": "^0.3.0",
-    "gulp-rename": "^1.2.0",
     "gulp-util": "^2.2.14",
-    "karma": "^0.12.16",
-    "karma-mocha": "^0.1.3",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "mocha": "^1.20.1"
+    "jquery": "^2.1.1",
+    "liveify": "^0.4.0",
+    "phantomjs": "^1.9.7-8",
+    "tape": "^2.13.2",
+    "testling": "^1.6.1"
   },
   "author": "Lucas F. Souza",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node ./node_modules/gulp/bin/gulp",
-    "compile": "node ./node_modules/gulp/bin/gulp build",
-    "test": "node ./node_modules/gulp/bin/gulp test"
+    "start": "gulp build",
+    "test": "npm start && browserify -t liveify test/*.ls | testling"
   }
 }
