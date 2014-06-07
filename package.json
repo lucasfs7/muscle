@@ -17,7 +17,8 @@
     "liveify": "^0.4.0",
     "phantomjs": "^1.9.7-8",
     "tape": "^2.13.2",
-    "testling": "^1.6.1"
+    "testling": "^1.6.1",
+    "underscore": "^1.6.0"
   },
   "author": "Lucas F. Souza",
   "main": "lib/index.js",
