@@ -2,11 +2,10 @@
 
 Backbone = require 'backbone'
 Backbone.$ = $ = require 'jquery'
-_ = require 'underscore'
 
 module.exports = Backbone.View.extend do
   initialize: ->
-    @createTemplate!
+    that! if @template?
     @watcher!
     @trigger 'initialized'
 
@@ -19,9 +18,6 @@ module.exports = Backbone.View.extend do
 
   watcher: ->
     @on 'rendered', @DOMControl, @
-
-  createTemplate: ->
-    @template = _.template('<p>teste</p>');
 
   DOMControl: ->
 
