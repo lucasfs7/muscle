@@ -27,5 +27,5 @@ gulp.task('test', ['build'], function() {
 
 gulp.task('default', function() {
   console.log('run "npm run-script compile" to build the lib');
-  console.log('run "npm test" to test the lib");
+  console.log('run "npm test" to test the lib');
 });
