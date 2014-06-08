@@ -5,7 +5,7 @@ Backbone.$ = $ = require 'jquery'
 
 module.exports = Backbone.View.extend do
   initialize: ->
-    that! if @template?
+    @template? = @template!
     @watcher!
     @trigger 'initialized'
 

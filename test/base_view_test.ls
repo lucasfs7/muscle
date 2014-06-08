@@ -9,8 +9,7 @@ test 'Base View', (t) ->
     className: 'test-view'
     tagName: 'article'
     id: 'test'
-    template: ->
-      -> _.template(test-template)
+    template: -> _.template(test-template)
 
   test-view = new TestView!
   test-view.render!
