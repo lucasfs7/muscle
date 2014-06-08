@@ -1,46 +1,47 @@
-describe 'Model View', ->
-  before ->
-    @modelName = 'Model Test'
-    @modelDescription = 'This is a test model'
+_ = require 'underscore'
+Backbone = require 'backbone'
+Backbone.$ = $ = require 'jquery'
+ModelView = require '../lib/model_view'
+test = require 'tape'
 
-    TestModel = Backbone.Model.extend {}
+test 'Model View', (t) ->
+  model-name = 'Model Test'
+  test-template = '<p class="name"><%= name %></p>'
 
-    TestModelView = Muscle.ModelView.extend
-      className: 'model-test'
-      tagName: 'article'
-      templateDir: 'template/'
-      templateName: 'model_view_test'
+  TestModel = Backbone.Model.extend {}
 
-    @testModelView = new TestModelView
-      model: new TestModel
-        name: @modelName
-        description: @modelDescription
+  TestModelView = ModelView.extend do
+    className: 'model-test'
+    tagName: 'article'
+    template: -> _.template(test-template)
 
-    @testModelView.render()
+  test-model-view = new TestModelView {model: new TestModel}
+  test-model-view.model.set {name: model-name}
 
-  it 'should exist', ->
-    expect(@testModelView).to.be.ok
+  t.test 'should exist', (t) ->
+    t.ok test-model-view
+    t.end!
 
-  it 'should have a model', ->
-    expect(@testModelView.model).to.be.ok
+  t.test 'should have a model', (t) ->
+    t.ok test-model-view.model
+    t.equal typeof test-model-view.model, 'object'
+    t.end!
 
-  it 'should be rendered', ->
-    expect(@testModelView.$el.find('.name').html).to.be @modelName
-    expect(@testModelView.$el.find('.description').html).to.be @modelDescription
+  t.test 'should be rendered', (t) ->
+    name = test-model-view.$el.find '.name'
+    t.equal name.html!, model-name
+    t.end!
 
-  it 'should change when model attributes change', ->
-    newName = 'new name'
-    newDescription = 'new description'
+  t.test 'should change when model attributes change', (t) ->
+    new-name = 'new name'
+    test-model-view.model.set {name: new-name}
+    name = test-model-view.$el.find '.name'
+    t.equal name.html!, new-name
+    t.end!
 
-    @testModelView.model.set
-      name: newName
-      description: newDescription
-
-    expect(@testModelView.$el.find('.name').html).to.be newName
-    expect(@testModelView.$el.find('.description').html).to.be newDescription
-
-  it 'should remove the view when the model is destroyed', ->
+  t.test 'should remove the view when the model is destroyed', (t) ->
     div = document.createElement 'div'
-    $(div).append @testModelView.$el
-    @testModelView.model.destroy()
-    expect(@testModelView.$el[0] in div.childNodes).to.be.false
+    $(div).append test-model-view.$el
+    test-model-view.model.destroy!
+    t.notOk test-model-view.$el[0] in div.childNodes
+    t.end!
