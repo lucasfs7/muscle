@@ -20,4 +20,5 @@ module.exports = Backbone.View.extend do
     @on 'rendered', @DOMControl, @
 
   DOMControl: ->
+  template: ->
 
