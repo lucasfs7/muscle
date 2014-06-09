@@ -21,7 +21,7 @@
   },
   "testling": {
     "browsers": [
-      "ie/8..latest"
+      "ie/8..latest",
       "firefox/latest",
       "chrome/latest",
       "safari/5..latest",
