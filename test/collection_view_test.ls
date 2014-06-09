@@ -1,44 +1,45 @@
-describe 'Collection View', ->
-  before ->
-    obj = [
-      {
-        name: 'name 1'
-        descrition: 'desc 1'
-      },
-      {
-        name: 'name 2'
-        description: '2'
-      }
-    ]
+_ = require 'underscore'
+Backbone = require 'backbone'
+Backbone.$ = $ = require 'jquery'
+ModelView = require '../lib/model_view'
+CollectionView = require '../lib/collection_view'
+test = require 'tape'
 
-    TestCollection = Backbone.Collection.extend
-      model: Backbone.Model.extend {}
+test 'Collection View', (t) ->
+  obj = [{name: 'name 1'}, {name: 'name 2'}]
+  test-template = '<p class="name"><%= name %></p>'
 
-    TestModelView = Muscle.ModelView.extend
-      className: 'model-test'
-      tagName: 'li'
-      templateDir: 'template/'
-      templateName: 'model_view_test'
+  TestCollection = Backbone.Collection.extend do
+    model: Backbone.Model.extend {}
 
-    TestCollectionView = Muscle.CollectionView.extend
-      modelView: TestModelView
-      className: 'collection-test'
-      tagName: 'ul'
+  TestModelView = ModelView.extend do
+    className: 'model-test'
+    tagName: 'li'
+    template: -> _.template(test-template)
 
-    @testCollectionView = new TestCollectionView
-      collection: new TestCollection
+  TestCollectionView = CollectionView.extend do
+    modelView: TestModelView
+    className: 'collection-test'
+    tagName: 'ul'
 
-    @testCollectionView.collection.reset obj
+  test-collection-view = new TestCollectionView do
+    collection: new TestCollection
 
-  it 'should exist', ->
-    expect(@testCollectionView).to.be.ok
+  test-collection-view.collection.reset obj
 
-  it 'should have a collection', ->
-    expect(@testCollectionView.collection).to.be.ok
+  t.test 'should exist', (t) ->
+    t.ok test-collection-view
+    t.end!
 
-  it 'should have 2 models', ->
-    expect(@testCollectionView.collection.length).to.be 2
+  t.test 'should have a collection', (t) ->
+    t.equal typeof test-collection-view.collection, 'object'
+    t.end!
 
-  it 'should be rendered', ->
-    expect(@testCollectionView.$el.html).to.not.be.empty
+  t.test 'should have 2 models', (t) ->
+    t.equal test-collection-view.collection.length, 2
+    t.end!
+
+  t.test 'should be rendered', (t) ->
+    t.notEqual testCollectionView.$el.html!, ''
+    t.end!
 
