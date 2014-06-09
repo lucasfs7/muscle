@@ -7,6 +7,7 @@
     "type": "git",
     "url": "git://github.com/lucasfs7/muscle.git"
   },
+  "keywords": ["browser", "server", "client", "backbone", "view", "browserify"],
   "dependencies": {
     "LiveScript": "^1.2.0",
     "backbone": "^1.1.2",
@@ -17,6 +18,16 @@
     "tape": "^2.13.2",
     "testling": "^1.6.1",
     "underscore": "^1.6.0"
+  },
+  "testling": {
+    "browsers": [
+      "ie/8..latest"
+      "firefox/latest",
+      "chrome/latest",
+      "safari/5..latest",
+      "opera/11",
+      "opera/next"
+    ]
   },
   "author": "Lucas F. Souza",
   "main": "lib/index.js",
