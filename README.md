@@ -1,9 +1,25 @@
 # Muscle.js
 
+[![browser support](https://ci.testling.com/lucasfs7/muscle.png)](https://ci.testling.com/lucasfs7/muscle)
+
 A layer on top of Backbonejs to bring more control to views and a better integration between views and models/collections.
+
+Totally integrated with browserify.
+
+#### installing:
+
+```
+$ npm install muscle
+```
 
 #### using:
 ```
+// require the libs
+
+var Backbone = require('backbone');
+var $ = Backbone.$ = require('jquery');
+var Muscle = require('muscle');
+
 // create the model and collection
 
 var Book = Backbone.Model.extend({});
@@ -41,23 +57,12 @@ var BookList = Muscle.CollectionView.extend({
 var bookList = new BookList({ collection: new Books });
 ```
 
-#### compiling:
-```
-$ cake compile
-```
-
-The compile will output the files on tmp/ directory.
-
 #### building:
 ```
-$ cake build
+$ npm start
 ```
-
-The build will output a single file: tmp/muscle.js.
 
 #### testing:
 ```
-$ cake test
+$ npm test
 ```
-
-The test will build the lib and run the tests.
