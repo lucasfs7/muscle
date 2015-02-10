@@ -13,7 +13,7 @@ $ npm install muscle
 ```
 
 #### using:
-```
+```javascript
 // require the libs
 
 var Backbone = require('backbone');
@@ -30,7 +30,9 @@ var Books = Backbone.Collection.extend({ model: Book });
 var BookShow = Muscle.ModelView.extend({
   className: 'book-show',
   tagName: 'article',
-  templateName: 'book_show'
+  template: function() {
+    return require('book_show_template');
+  }
 });
 
 var bookShow = new BookShow({
@@ -45,7 +47,9 @@ var bookShow = new BookShow({
 var BookItem = Muscle.ModelView.extend({
   className: 'book-item',
   tagName: 'li',
-  templateName: 'book_item'
+  template: function() {
+    return require('book_item_template');
+  }
 });
 
 var BookList = Muscle.CollectionView.extend({
