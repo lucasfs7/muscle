@@ -32,7 +32,7 @@
   "author": "Lucas F. Souza",
   "main": "lib/index.js",
   "scripts": {
-    "start": "lsc -cbo lib/ src/",
+    "start": "lsc --no-header -cbo lib/ src/",
     "test": "npm start && browserify -t liveify test/*.ls | testling"
   }
 }
